@@ -1,0 +1,23 @@
+version = "0.1"
+description = "Bitfinex API library"
+requires = "bitfinex.core"
+requires(toploop) = "bitfinex.top"
+
+package "core" (
+  requires = "ppx_deriving_yojson.runtime cohttp.lwt hex cstruct nocrypto"
+  archive(byte) = "bitfinex.cma"
+  archive(byte, plugin) = "bitfinex.cma"
+  archive(native) = "bitfinex.cmxa"
+  archive(native, plugin) = "bitfinex.cmxs"
+  exists_if = "bitfinex.cma"
+)
+
+package "top" (
+  description = "Toplevel printers for the Bitfinex API"
+  requires = "bitfinex.core"
+  archive(byte) = "bitfinex_top.cma"
+  archive(byte, plugin) = "bitfinex_top.cma"
+  archive(native) = "bitfinex_top.cmxa"
+  archive(native, plugin) = "bitfinex_top.cmxs"
+  exists_if = "bitfinex_top.cma"
+)
