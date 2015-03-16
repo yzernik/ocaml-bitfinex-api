@@ -68,9 +68,15 @@ module Ticker = struct
   end
 
   type t = {
-    mid: float; bid: float; ask: float; last_price: float;
-    low: float; high: float; volume: float; timestamp: float
-  } [@@deriving show]
+    mid: float [@default 0.];
+    bid: float [@default 0.];
+    ask: float [@default 0.];
+    last_price: float [@default 0.];
+    low: float [@default 0.];
+    high: float [@default 0.];
+    volume: float [@default 0.];
+    timestamp: float [@default 0.];
+  } [@@deriving show,create]
 
   let of_raw r =
     {
